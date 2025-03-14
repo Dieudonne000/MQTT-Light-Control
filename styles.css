@@ -1,0 +1,276 @@
+/* Modern CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.6;
+    transition: all 0.5s ease;
+}
+
+/* Light OFF Theme (Dark Mode) */
+body.light-off {
+    background: linear-gradient(135deg, #1a2a3a 0%, #0d1b2a 100%);
+    color: #e0e0e0;
+}
+
+/* Light ON Theme (Light Mode) */
+body.light-on {
+    background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
+    color: #333;
+}
+
+.container {
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+/* Container styling for light off */
+body.light-off .container {
+    background-color: rgba(30, 40, 50, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Container styling for light on */
+body.light-on .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(100, 181, 246, 0.3);
+    border: 1px solid rgba(100, 181, 246, 0.2);
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
+
+body.light-off h1 {
+    color: #90caf9;
+    text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+}
+
+body.light-on h1 {
+    color: #1976d2;
+    text-shadow: 0 0 10px rgba(25, 118, 210, 0.2);
+}
+
+.light-indicator {
+    margin: 2.5rem auto;
+    display: flex;
+    justify-content: center;
+}
+
+.bulb {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Bulb styling for light off */
+body.light-off .bulb {
+    background: radial-gradient(circle at center, #2c3e50, #1a2a3a);
+    box-shadow: 
+        inset 0 0 20px rgba(0, 0, 0, 0.5),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Bulb styling for light on */
+body.light-on .bulb {
+    background: radial-gradient(circle at center, #fff, #e6f7ff);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 60px rgba(100, 181, 246, 0.8);
+}
+
+.bulb::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 15px;
+    border-radius: 5px 5px 0 0;
+    transition: all 0.5s ease;
+}
+
+body.light-off .bulb::before {
+    background-color: #4a5568;
+}
+
+body.light-on .bulb::before {
+    background-color: #90caf9;
+}
+
+.bulb.on {
+    background: radial-gradient(circle at center, #fff, #bbdefb);
+}
+
+.glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+body.light-on .bulb .glow {
+    background: radial-gradient(circle at center, rgba(100, 181, 246, 0.8), transparent 70%);
+    opacity: 1;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 1rem 1.8rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Button styling for light off */
+body.light-off .btn-on {
+    background: linear-gradient(135deg, #4fc3f7, #2196f3);
+    color: white;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.4);
+}
+
+body.light-off .btn-on:hover {
+    background: linear-gradient(135deg, #29b6f6, #1e88e5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(33, 150, 243, 0.6);
+}
+
+body.light-off .btn-off {
+    background: linear-gradient(135deg, #455a64, #263238);
+    color: #e0e0e0;
+    box-shadow: 0 4px 15px rgba(38, 50, 56, 0.4);
+}
+
+body.light-off .btn-off:hover {
+    background: linear-gradient(135deg, #546e7a, #37474f);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(38, 50, 56, 0.6);
+}
+
+/* Button styling for light on */
+body.light-on .btn-on {
+    background: linear-gradient(135deg, #64b5f6, #1976d2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.4);
+}
+
+body.light-on .btn-on:hover {
+    background: linear-gradient(135deg, #42a5f5, #1565c0);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.6);
+}
+
+body.light-on .btn-off {
+    background: linear-gradient(135deg, #90a4ae, #607d8b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(96, 125, 139, 0.4);
+}
+
+body.light-on .btn-off:hover {
+    background: linear-gradient(135deg, #78909c, #546e7a);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(96, 125, 139, 0.6);
+}
+
+.status {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+}
+
+/* Status styling for light off */
+body.light-off .status {
+    background-color: rgba(30, 40, 50, 0.6);
+    color: #90caf9;
+    border: 1px solid rgba(100, 181, 246, 0.2);
+}
+
+/* Status styling for light on */
+body.light-on .status {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #1976d2;
+    border: 1px solid rgba(100, 181, 246, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.8rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 80%;
+    }
+    
+    .bulb {
+        width: 100px;
+        height: 100px;
+    }
+}
